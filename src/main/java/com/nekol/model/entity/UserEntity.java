@@ -25,11 +25,6 @@ public class UserEntity extends BaseEntity {
     @OneToOne(mappedBy = "user")
     private UserProfileEntity userProfileEntity;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    Set<RoleEntity> roles = new HashSet<>();
 
     public void addRole(RoleEntity role) {
         roles.add(role);
@@ -40,6 +35,18 @@ public class UserEntity extends BaseEntity {
         roles.remove(role);
         role.getUsers().remove(this);
     }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    Set<RoleEntity> roles = new HashSet<>();
+
+    @OneToMany(mappedBy = "userProfile")
+    private Set<PostEntity> postEntities = new HashSet<>();
+
+    @OneToMany(mappedBy = "userProfile")
+    private Set<CommentEntity> commentEntities = new HashSet<>();
 
 
 }
