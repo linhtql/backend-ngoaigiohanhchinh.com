@@ -9,7 +9,7 @@ public interface IRoleService {
 
     List<RoleDTO> findAllRole();
 
-    RoleDTO findById(Integer id);
+    RoleDTO findById(Long id);
 
-    void deleteRole(Integer id);
+    void deleteRole(Long id);
 }
