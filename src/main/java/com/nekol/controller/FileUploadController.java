@@ -1,6 +1,7 @@
 package com.nekol.controller;
 
 import com.nekol.model.payload.FileUploadResponse;
+import com.nekol.service.IFileStorageService;
 import com.nekol.service.impl.FileStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
 public class FileUploadController {
 
     @Autowired
-    private FileStorageService fileStorageService;
+    private IFileStorageService fileStorageService;
 
     @PostMapping("/uploadFile")
     public FileUploadResponse uploadFile(@RequestParam("file") MultipartFile file) {

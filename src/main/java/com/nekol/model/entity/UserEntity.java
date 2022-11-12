@@ -20,21 +20,13 @@ public class UserEntity extends BaseEntity {
     @Column(nullable = false, length = 70)
     private String email;
 
+    @Column
     private boolean enable;
 
     @OneToOne(mappedBy = "user")
-    private UserProfileEntity userProfileEntity;
+    private UserProfileEntity userProfile;
 
 
-    public void addRole(RoleEntity role) {
-        roles.add(role);
-        role.getUsers().add(this);
-    }
-
-    public void removeRole(RoleEntity role) {
-        roles.remove(role);
-        role.getUsers().remove(this);
-    }
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "user_role",
@@ -42,11 +34,7 @@ public class UserEntity extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     Set<RoleEntity> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "userProfile")
-    private Set<PostEntity> postEntities = new HashSet<>();
 
-    @OneToMany(mappedBy = "userProfile")
-    private Set<CommentEntity> commentEntities = new HashSet<>();
 
 
 }
