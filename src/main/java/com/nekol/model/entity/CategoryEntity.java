@@ -15,7 +15,7 @@ public class CategoryEntity extends BaseEntity{
     private String name;
 
     @Column
-    private Long parent_id;
+    private Long parentId;
 
     @ManyToMany(mappedBy = "categories", cascade = CascadeType.ALL)
     Set<PostEntity> posts = new HashSet<>();

@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UserProfileService implements IUserProfileService {
+public class UserProfileServiceImpl implements IUserProfileService {
 
     @Autowired
     private UserProfileRepository userProfileRepository;
@@ -40,7 +40,7 @@ public class UserProfileService implements IUserProfileService {
     private RoleRepository roleRepository;
 
     @Autowired
-    private FileStorageService storageService;
+    private FileStorageServiceImpl storageService;
 
     @Override
     public UserProfileDTO getProfileByUsername(String username) {

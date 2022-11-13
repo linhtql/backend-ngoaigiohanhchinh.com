@@ -2,7 +2,6 @@ package com.nekol.controller;
 
 import com.nekol.model.payload.FileUploadResponse;
 import com.nekol.service.IFileStorageService;
-import com.nekol.service.impl.FileStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
